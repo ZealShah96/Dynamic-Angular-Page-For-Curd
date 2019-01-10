@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {Router} from "@angular/router";
-import {first} from "rxjs/operators";
-import {AuthenticationService} from "../service/auth.service";
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { Router } from "@angular/router";
+import { first } from "rxjs/operators";
+import { AuthenticationService } from "../service/auth.service";
 
 @Component({
   selector: 'app-login',
@@ -17,13 +17,25 @@ export class LoginComponent implements OnInit {
   constructor(private formBuilder: FormBuilder, private router: Router, private authService: AuthenticationService) { }
 
   onSubmit() {
+
     this.submitted = true;
     if (this.loginForm.invalid) {
       return;
     }
-    if(this.loginForm.controls.email.value == 'dhiraj@gmail.com' && this.loginForm.controls.password.value == 'password') {
-        this.router.navigate(['list-user']);
-    }else {
+
+    if (this.loginForm.controls.email.value != '' && this.loginForm.controls.password.value != '') {
+     debugger;
+      this.authService.login(this.loginForm.controls.email.value, this.loginForm.controls.password.value).subscribe((response) => {
+debugger;
+        console.log(response);
+        if(response.status==401){
+          this.invalidLogin = true;
+        }
+        else{
+        this.router.navigate([`list-todolists/${response.data[0].id}`]);
+      }
+      });
+    } else {
       this.invalidLogin = true;
     }
   }

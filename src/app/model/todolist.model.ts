@@ -1,11 +1,11 @@
 import { Deserializable } from "./utilityModels/deserilize.model";
 
 
-export class User implements Deserializable{
+export class Todolist implements Deserializable{
     id: number;
     name: string;
-    password:string;
-    age:Number;
+    color:string;
+    user_id:Number;
     created_at:Date;
     updated_at:Date;
     is_deleted:Boolean;

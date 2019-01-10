@@ -8,9 +8,10 @@ import {AuthenticationService} from "./service/auth.service";
 import {ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
 import { AddUserComponent } from './add-user/add-user.component';
-import { EditUserComponent } from './edit-user/edit-user.component';
+import { EditModelComponent } from './edit-user/edit-model.component';
 import {ListUserComponent} from "./list-user/list-user.component";
 import {UserService} from "./service/user.service";
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -18,13 +19,14 @@ import {UserService} from "./service/user.service";
     LoginComponent,
     ListUserComponent,
     AddUserComponent,
-    EditUserComponent
+    EditModelComponent
   ],
   imports: [
     BrowserModule,
     routing,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [AuthenticationService, UserService],
   bootstrap: [AppComponent]

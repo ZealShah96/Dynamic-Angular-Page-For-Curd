@@ -10,7 +10,7 @@ import {Router} from "@angular/router";
   styleUrls: ['./add-user.component.css']
 })
 export class AddUserComponent implements OnInit {
-
+  module="user";
   constructor(private formBuilder: FormBuilder,private router: Router, private userService: UserService) { }
 
   addForm: FormGroup;
@@ -27,7 +27,7 @@ export class AddUserComponent implements OnInit {
   }
 
   onSubmit() {
-    this.userService.createUser(this.addForm.value)
+    this.userService.createUser(this.addForm.value,this.module)
       .subscribe( data => {
         this.router.navigate(['list-user']);
       });
