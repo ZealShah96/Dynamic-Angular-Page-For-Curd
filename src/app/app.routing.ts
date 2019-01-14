@@ -52,10 +52,10 @@ const routes: Routes = [
      // url: "/todolists/users/1",
       fieldsToFetchForForm: ["id", "name", "color", "user_id"]
     }
-  }
+  },
   //path : 'heroes', component : HeroDetailComponent,
   //{ path: '\edit\:module?:id', component:  EditUserComponent},
-  //{path : '', component : LoginComponent}
+  {path : '', component : LoginComponent}
 ];
 
 export const routing = RouterModule.forRoot(routes);
